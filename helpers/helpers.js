@@ -44,5 +44,3 @@ exports.simNameNormalizer = function (simulator) {
       return simulator;
   }
 }
-
-console.log(this.simNameNormalizer("assetto corsa"))

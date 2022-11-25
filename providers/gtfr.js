@@ -68,7 +68,7 @@ function dateParser(date) {
   return { starttime, endtime }
 }
 
-parseGTFR().then(async (events) => {
+parseGTFR(url).then(async (events) => {
   let queue = await calendar.createEventQueue(events);
   calendar.createEvents(queue);
 })

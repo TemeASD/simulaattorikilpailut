@@ -130,20 +130,21 @@ async function listEvents(auth) {
 }
 
 //lists calendars
-async function listCalendars(auth) {
-  const calendar = google.calendar({ version: 'v3', auth });
-  const res = await calendar.calendarList.list();
-  const calendars = res.data.items;
-  if (!calendars || calendars.length === 0) {
-    console.log('No calendars found.');
-    return;
-  }
-  console.log('Calendars:');
-  calendars.map((calendar, i) => {
-    console.log(`${calendar.id} - ${calendar}`);
-  });
+async function listCalendars() {
+  authorize().then(async (auth) => {
+    const calendar = google.calendar({ version: 'v3', auth });
+    const res = await calendar.calendarList.list();
+    const calendars = res.data.items;
+    if (!calendars || calendars.length === 0) {
+      console.log('No calendars found.');
+      return;
+    }
+    console.log('Calendars:');
+    calendars.map((calendar, i) => {
+      console.log(`${calendar.id} - ${calendar}`);
+    });
+  }).catch(console.error);
 }
-
 /**
  * Used for creating a list of events that you want to create
  * Doesn't create duplicate events, checks are based on event.summary and event.start.dateTime of old and new events
@@ -202,16 +203,16 @@ exports.createEventQueue = async (newEvents) => {
 }
 
 /**
- * Takes array of events, then creates a single one every three second
+ * Takes array of events, then creates a single one every four second
  * Gets around Googles pesky rate limit
  * @param {*} events 
  */
 exports.createEvents = (events) => {
   authorize().then(async (auth) => {
-    for (let i = 0; i <= events.length; i++) {
+    for (let i = 0; i < events.length; i++) {
       setTimeout(() => {
         createEvent(events[i], auth);
-      }, 3000 * i)
+      }, 4000 * i)
     }
   });
 }

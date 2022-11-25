@@ -4,8 +4,7 @@
 const calendar = require('../calendar.js');
 const helpers = require('../helpers/helpers.js');
 const axios = require("axios");
-const cheerio = require('cheerio');
-const url = "https://simracing.fi/api/calendar"
+const url = "https://simracing.fi/api/calendar";
 
 async function parseFISRA(url) {
   const { data } = await axios.get(url);
@@ -29,10 +28,10 @@ async function parseFISRA(url) {
     event.summary = `${el.seasonname}`;
     if (el.racename.length > 3) {
       event.description = `Sarja: ${el.seasonname} - ${el.racename} - Rata: ${el.trackname}
-    <br><a href="${link}">Linkki kilpailutapahtumaan simracing.fi palvelussa</a>`
+<br><a href="${link}">Linkki kilpailutapahtumaan simracing.fi palvelussa</a>`
     } else {
       event.description = `Sarja: ${el.seasonname} - Rata: ${el.trackname} 
-      <br><a href="${link}">Linkki kilpailutapahtumaan simracing.fi palvelussa</a>`
+<br><a href="${link}">Linkki kilpailutapahtumaan simracing.fi palvelussa</a>`
     }
     event.start.dateTime = dates.starttime;
     event.end.dateTime = dates.endtime;
@@ -64,7 +63,6 @@ function dateParser(date) {
 }
 
 parseFISRA(url).then(async (events) => {
-  console.log(events)
   let queue = await calendar.createEventQueue(events);
   calendar.createEvents(queue);
 })

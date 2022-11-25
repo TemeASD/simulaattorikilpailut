@@ -18,7 +18,7 @@ elements.forEach(element => {
       element.innerHTML = '<a href="https://simracing.fi/fisra">FiSRA</a>'
       break;
     case 'finnish_simracing_united':
-      element.innerHTML = '<a href="https://simracing.fi/sarjat/11">FiSU</a>'
+      element.innerHTML = '<a href="https://simracing.fi/sarjat/11">Finnish Simracing United</a>'
       break;
     case 'fisu':
       element.innerHTML = '<a href="https://simracing.fi/sarjat/11">Finnish Simracing United</a>'
