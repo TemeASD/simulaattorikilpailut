@@ -9,6 +9,8 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'config.json');
 const config = require('./config.json');
+
+
 let stripJs = require('strip-js');
 
 exports.writeCalendarEventsToHTML = async () => {
