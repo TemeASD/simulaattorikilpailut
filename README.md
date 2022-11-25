@@ -35,8 +35,8 @@ _Provider_ is the thingamabob that puts the calendar events into the calendar sy
 1. Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/TemeASD/griphax-discord-calendar.git
-cd griphax-discord-calendar
+git clone https://github.com/TemeASD/simulaattorikilpailut
+cd cd simulaattorikilpailut
 npm install
 ```
 
