@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulaattorikilpailut.fi</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta name="author" content="Teemu Pölkki">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&amp;display=swap" rel="stylesheet">
+  <meta property="og:title" content="Simulaattorikilpailut" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.simulaattorikilpailut.fi/" />
+  <meta property="og:image" content="https://www.simulaattorikilpailut.fi/img/simulaattorikilpailut.png" />
+  <link rel="stylesheet" href="style.css">
+  <script defer data-domain="simulaattorikilpailut.fi" src="https://newkyng.asuscomm.com/js/plausible.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="bg"></div>
+    <h1 id="heading">Tulevat kilpailut</h1>
+    <details>
+      <summary>
+        <h4>Haku</h4>
+      </summary>
+      <fieldset>
+        <legend>Alusta:</legend>
+
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="ACC" name="simulator" value="ACC">
+          <label for="ACC">ACC</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="AC" name="simulator" value="AC">
+          <label for="AC">AC</label>
+        </div>
+
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="iRacing" name="simulator" value="iRacing">
+          <label for="iRacing">iRacing</label>
+        </div>
+
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="Automobilista2" name="simulator"
+            value="Automobilista 2">
+          <label for="Automobilista2">Automobilista 2</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="DR2" name="simulator" value="DiRT Rally 2.0">
+          <label for="DR2">DiRT Rally 2.0</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked type="checkbox" id="GranTurismo7" name="simulator"
+            value="Gran Turismo 7">
+          <label for="GranTurismo7">Gran Turismo 7</label>
+        </div>
+      </fieldset>
+
+    </details>
+
+    <div id="cal-container">
+      <table>
+        <thead>
+          <tr>
+            <th id="date">Päivä</th>
+            <th id="organizer">Järjestäjä</th>
+            <th id="event">Kisa</th>
+            <th id="time">Aika</th>
+            <th id="platform">Alusta</th>
+            <th id="desc">Kuvaus</th>
+          </tr>
+        </thead>
+        <tbody id="dynamic-data">
+      </table>
+    </div>
+    <footer>
+      <p>© Teemu Pölkki 2022. Jos haluat sarjasi kilpailut listaan, ota yhteyttä <a
+          href="mailto:teemu.polkki@proton.me">teemu.polkki@proton.me</a><br> Sivuston
+        taustalla oleva Google Kalenterin voit <a
+          href="https://calendar.google.com/calendar/u/0?cid=YjFmODExMWIxMTEzY2VjOGE2M2I1ZjhhYTVjNWJmMGZlNzBmODdlOTY3NDBmYzY5NDUwZDBkOTg4NTAwZDFmN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t">lisätä
+          omaan tiliisi täältä.</a>. Julkinen selaimessa avautuva versio on<a
+          href="https://calendar.google.com/calendar/embed?src=904d33b78d329e6c8449a0f1d14568bbf29ad48f4b8be1215421423ddf93be7b%40group.calendar.google.com&ctz=Europe%2FHelsinki">
+          saatavilla täällä</a>
+        <br>
+        Sivusto on aktiivisessa kehityksessä, ja tällä hetkellä pre-alpha vaiheessa.
+      </p>
+      <figure class="figure">
+        <img class="img" src="more_grip.png">
+      </figure>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

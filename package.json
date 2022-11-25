@@ -1,0 +1,23 @@
+{
+  "name": "simracingfi-calendar",
+  "version": "0.0.1",
+  "description": "Website that aggregates different calendars to show as a single list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-providers": "node providers/gtfr.js",
+    "release-html": "node updatecal.js && cp -r dist/html/* ../simracingfi-calendar-dist/ && cd ../simracingfi-calendar-dist/ && git add -A && git commit -a -m \"Update\" && git push"
+  },
+  "author": "Teemu Pölkki",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
+    "axios": "^1.1.3",
+    "cheerio": "^1.0.0-rc.12",
+    "googleapis": "^105.0.0",
+    "strip-js": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
