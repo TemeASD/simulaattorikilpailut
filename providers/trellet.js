@@ -3,18 +3,11 @@
  * Trellet events here
  */
 const calendar = require('../calendar.js');
-const helpers = require('../helpers/helpers.js');
 const axios = require("axios");
-const args = process.argv.slice(2);
-const url = args[0]
 let simulator = "iRacing";
 const org = "Trellet"
-if (args[0] === undefined) {
-  console.log("Usage: node providers/simracingfi.js <url> ");
-  exit()
-}
-
-async function parseTrellet(url, simulator) {
+const urls = ["https://trellet.net/api/league/seasons/159", "https://trellet.net/api/league/seasons/158"]
+async function parseTrellet(url) {
   const data = await axios.get(url);
   let seasonName = data.data.season.name
   let events = [];
@@ -34,8 +27,8 @@ async function parseTrellet(url, simulator) {
     let link = `https://trellet.net/tulospalvelu/kausi/${data.data.season.id}`
     event.location = simulator;
     event.summary = `${trelleEvent.name}`;
-    event.description = `Ajat ovat suuntaa-antavia. <br>Sarja: ${seasonName}
-  <br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `
+    event.description = `Sarja: ${seasonName}
+<br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `
     event.start.dateTime = dates.starttime;
     event.end.dateTime = dates.endtime;
     events.push(event)
@@ -53,7 +46,10 @@ function dateParser(date) {
   return { starttime, endtime }
 }
 
-parseTrellet(url, simulator).then(async (events) => {
-  let queue = await calendar.createEventQueue(events);
-  calendar.createEvents(queue);
+urls.forEach(async (url) => {
+  console.log('in trelle ' + url)
+  parseTrellet(url).then(async (events) => {
+    let queue = await calendar.createEventQueue(events);
+    calendar.createEvents(queue);
+  })
 })

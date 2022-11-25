@@ -1,3 +1,2 @@
 const cal = require('./calendar.js');
-
-cal.writeCalendarEventsToHTML().then(exit()).catch(console.error);
+cal.writeCalendarEventsToHTML().then(console.log('done')).catch(console.error)

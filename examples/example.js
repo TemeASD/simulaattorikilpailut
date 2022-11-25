@@ -39,7 +39,7 @@ async function parseExample(url, simulator) {
     template.location = simulator;
     template.summary = `${event.name}`;
     template.description = `Ajat ovat suuntaa-antavia. <br>Sarja: ${seasonName}
-   <br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `
+    <br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `
     template.start.dateTime = dates.starttime;
     template.end.dateTime = dates.endtime;
     template.push(event)

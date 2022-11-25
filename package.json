@@ -1,12 +1,14 @@
 {
-  "name": "simracingfi-calendar",
+  "name": "simulaatiokilpailut",
   "version": "0.0.1",
   "description": "Website that aggregates different calendars to show as a single list",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update-providers": "node providers/gtfr.js",
-    "release-html": "node updatecal.js && cp -r dist/html/* ../simracingfi-calendar-dist/ && cd ../simracingfi-calendar-dist/ && git add -A && git commit -a -m \"Update\" && git push"
+    "release-html": "node index.js && cp -r dist/html/* ../simracingfi-calendar-dist/ && cd ../simracingfi-calendar-dist/ && git add -A && git commit -a -m \"Update\" && git push",
+    "test-html": "node index.js",
+    "run-providers": "node ./providers/gtfr.js && node ./providers/trellet.js && node ./providers/simracingfi.js"
   },
   "author": "Teemu Pölkki",
   "license": "MIT",
