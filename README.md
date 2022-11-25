@@ -53,10 +53,10 @@ All the code relating to the Calendar API was taken from [here](https://develope
 
 4. You may begin! 
 
-[./providers/example.js](./providers/example.js) contains an example on how you can build your own provider. Currently the system works as follows
+[./example/example.js](./example/example.js) contains an example on how you can build your own provider. Currently the system works as follows
 
 1. Create a file with the provider as the name
-2. Create the parser and construct an array of events according to the "template" in [./providers/example.js](./providers/example.js)
+2. Create the parser and construct an array of events according to the "template" in [./example/example.js](./example/example.js)
 3. Call `calendar.createEventQueue()` function with the array as parameter. The function returns bog standard js array of objects and not a fancy queue as the name suggests
 4. Use the return value as a parameter to call `calendar.createEvents()`. It will push the events into the calendar
 
