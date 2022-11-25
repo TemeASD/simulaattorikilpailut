@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulaattorikilpailut.fi</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta name="author" content="Teemu Pölkki">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&amp;display=swap" rel="stylesheet">
+  <meta property="og:title" content="Simulaattorikilpailut">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.simulaattorikilpailut.fi/">
+  <meta property="og:image" content="https://www.simulaattorikilpailut.fi/img/simulaattorikilpailut.png">
+  <link rel="stylesheet" href="style.css">
+  <script defer="" data-domain="simulaattorikilpailut.fi" src="https://newkyng.asuscomm.com/js/plausible.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="bg"></div>
+    <h1 id="heading">Tulevat kilpailut</h1>
+    <details>
+      <summary>
+        <h4>Haku</h4>
+      </summary>
+      <fieldset>
+        <legend>Alusta:</legend>
+
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="ACC" name="simulator" value="ACC">
+          <label for="ACC">ACC</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="AC" name="simulator" value="AC">
+          <label for="AC">AC</label>
+        </div>
+
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="iRacing" name="simulator" value="iRacing">
+          <label for="iRacing">iRacing</label>
+        </div>
+
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="Automobilista2" name="simulator" value="Automobilista 2">
+          <label for="Automobilista2">Automobilista 2</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="DR2" name="simulator" value="DiRT Rally 2.0">
+          <label for="DR2">DiRT Rally 2.0</label>
+        </div>
+        <div>
+          <input onclick="return filter(this)" checked="" type="checkbox" id="GranTurismo7" name="simulator" value="Gran Turismo 7">
+          <label for="GranTurismo7">Gran Turismo 7</label>
+        </div>
+      </fieldset>
+
+    </details>
+
+    <div id="cal-container">
+      <table>
+        <thead>
+          <tr>
+            <th id="date">Päivä</th>
+            <th id="organizer">Järjestäjä</th>
+            <th id="event">Kisa</th>
+            <th id="time">Aika</th>
+            <th id="platform">Alusta</th>
+            <th id="desc">Kuvaus</th>
+          </tr>
+        </thead>
+        <tbody id="dynamic-data">
+      <tr>
+                <td label="Päivä:" class="bold">lauantai<span class="small"> 26.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">DIRT 2.0 - AKK Kansallinen Sarja</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Sat Nov 26 2022 08:00:00 GMT+0200 (Eastern European Standard Time)">8.00</time> - 
+                  <time datetime="Sat Nov 26 2022 12:00:00 GMT+0200 (Eastern European Standard Time)">12.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">DiRT Rally 2.0</td>
+                <td label="Lisätiedot:" class="desc">DIRT 2.0 - AKK Kansallinen Sarja Osakilpailu 4 @ Ruotsi
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/dirt-2-0-akk-kansallinen-sarja/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">sunnuntai<span class="small"> 27.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">fisu</td>
+                <td label="Kisa:" class="bold">FiSU S13: IMSA Goes Abroad - Oesterreichring 1979</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Sun Nov 27 2022 18:00:00 GMT+0200 (Eastern European Standard Time)">18.00</time> - 
+                  <time datetime="Sun Nov 27 2022 18:00:00 GMT+0200 (Eastern European Standard Time)">18.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">AC</td>
+                <td label="Lisätiedot:" class="desc">Sarja: FiSU S13: IMSA Goes Abroad - Rata: Oesterreichring 1979
+ <br><a href="https://simracing.fi/kilpailut/661">Linkki kilpailutapahtumaan simracing.fi palvelussa</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">sunnuntai<span class="small"> 27.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">f.a.s.t</td>
+                <td label="Kisa:" class="bold">Gran Turismo 7 Suomen Mestaruus 2022  - Circuit de Barcelona-Catalunya Grand Prix</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Sun Nov 27 2022 19:00:00 GMT+0200 (Eastern European Standard Time)">19.00</time> - 
+                  <time datetime="Sun Nov 27 2022 22:00:00 GMT+0200 (Eastern European Standard Time)">22.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Gran Turismo 7</td>
+                <td label="Lisätiedot:" class="desc">Sarja: Gran Turismo 7 Suomen Mestaruus 2022  - Rata: Circuit de Barcelona-Catalunya Grand Prix
+ <br><a href="https://simracing.fi/kilpailut/646">Linkki kilpailutapahtumaan simracing.fi palvelussa</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">tiistai<span class="small"> 29.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">AMS2 - Around The World 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Tue Nov 29 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> - 
+                  <time datetime="Wed Nov 30 2022 00:00:00 GMT+0200 (Eastern European Standard Time)">0.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Automobilista 2</td>
+                <td label="Lisätiedot:" class="desc">AMS2 - Around The World 2022 Round 3 / Kisa1 @ 
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/ams2-around-the-world-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 30.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">GT4 Intercontinental Championship</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Nov 30 2022 18:30:00 GMT+0200 (Eastern European Standard Time)">18.30</time> - 
+                  <time datetime="Wed Nov 30 2022 22:30:00 GMT+0200 (Eastern European Standard Time)">22.30</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Gran Turismo 7</td>
+                <td label="Lisätiedot:" class="desc">GT4 Intercontinental Championship Aasian GP 1 @ Fuji International Speedway (Short)
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/gt4-intercontinental-championship/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 30.11.2022</span></td>
+                <td label="Järjestäjä:" class="bold">fisra</td>
+                <td label="Kisa:" class="bold">FiSRA GT Challenge 2022 - Snetterton</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Nov 30 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> - 
+                  <time datetime="Wed Nov 30 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">ACC</td>
+                <td label="Lisätiedot:" class="desc">Sarja: FiSRA GT Challenge 2022 - Rata: Snetterton
+ <br><a href="https://simracing.fi/kilpailut/656">Linkki kilpailutapahtumaan simracing.fi palvelussa</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 01.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">trellet</td>
+                <td label="Kisa:" class="bold">Monterey Grand Prix</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Dec 01 2022 19:00:00 GMT+0200 (Eastern European Standard Time)">19.00</time> - 
+                  <time datetime="Thu Dec 01 2022 23:00:00 GMT+0200 (Eastern European Standard Time)">23.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">Ajat ovat suuntaa-antavia. <br>Sarja: Trellet Season 25 IndyCar Series
+  <br><a href="https://trellet.net/tulospalvelu/kausi/159">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> </td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 07.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">GT4 Intercontinental Championship</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Dec 07 2022 18:30:00 GMT+0200 (Eastern European Standard Time)">18.30</time> - 
+                  <time datetime="Wed Dec 07 2022 22:30:00 GMT+0200 (Eastern European Standard Time)">22.30</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Gran Turismo 7</td>
+                <td label="Lisätiedot:" class="desc">GT4 Intercontinental Championship Pohjois-Amerikan GP 1 @ Watkins Glen Long Course
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/gt4-intercontinental-championship/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 08.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">trellet</td>
+                <td label="Kisa:" class="bold">Dalen Kalapuikot 200</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Dec 08 2022 19:00:00 GMT+0200 (Eastern European Standard Time)">19.00</time> - 
+                  <time datetime="Thu Dec 08 2022 23:00:00 GMT+0200 (Eastern European Standard Time)">23.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">Ajat ovat suuntaa-antavia. <br>Sarja: Trellet Season 25 Cup Series
+  <br><a href="https://trellet.net/tulospalvelu/kausi/158">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> </td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 08.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">iRacing - Head Out World Tour 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Dec 08 2022 19:45:00 GMT+0200 (Eastern European Standard Time)">19.45</time> - 
+                  <time datetime="Thu Dec 08 2022 23:45:00 GMT+0200 (Eastern European Standard Time)">23.45</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">iRacing - Head Out World Tour 2022 Osakilpailu 2 @ Circuit Gilles Villeneuve GP
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/iracing-head-out-world-tour-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">lauantai<span class="small"> 10.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">DIRT 2.0 - AKK Kansallinen Sarja</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Sat Dec 10 2022 08:00:00 GMT+0200 (Eastern European Standard Time)">8.00</time> - 
+                  <time datetime="Sat Dec 10 2022 12:00:00 GMT+0200 (Eastern European Standard Time)">12.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">DiRT Rally 2.0</td>
+                <td label="Lisätiedot:" class="desc">DIRT 2.0 - AKK Kansallinen Sarja Osakilpailu 5 @ Suomi
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/dirt-2-0-akk-kansallinen-sarja/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">sunnuntai<span class="small"> 11.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">fisu</td>
+                <td label="Kisa:" class="bold">FiSU S13: IMSA Goes Abroad - Autódromo do Estoril</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Sun Dec 11 2022 18:00:00 GMT+0200 (Eastern European Standard Time)">18.00</time> - 
+                  <time datetime="Sun Dec 11 2022 18:00:00 GMT+0200 (Eastern European Standard Time)">18.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">AC</td>
+                <td label="Lisätiedot:" class="desc">Sarja: FiSU S13: IMSA Goes Abroad - Rata: Autódromo do Estoril
+ <br><a href="https://simracing.fi/kilpailut/662">Linkki kilpailutapahtumaan simracing.fi palvelussa</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 14.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">GT4 Intercontinental Championship</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Dec 14 2022 18:30:00 GMT+0200 (Eastern European Standard Time)">18.30</time> - 
+                  <time datetime="Wed Dec 14 2022 22:30:00 GMT+0200 (Eastern European Standard Time)">22.30</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Gran Turismo 7</td>
+                <td label="Lisätiedot:" class="desc">GT4 Intercontinental Championship Etelä-Amerikan GP 1 @ Autódromo de Interlagos
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/gt4-intercontinental-championship/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 14.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">fisra</td>
+                <td label="Kisa:" class="bold">FiSRA GT Challenge 2022 - Imola</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Dec 14 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> - 
+                  <time datetime="Wed Dec 14 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">ACC</td>
+                <td label="Lisätiedot:" class="desc">Sarja: FiSRA GT Challenge 2022 - Rata: Imola
+ <br><a href="https://simracing.fi/kilpailut/657">Linkki kilpailutapahtumaan simracing.fi palvelussa</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 22.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">iRacing - Head Out World Tour 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Dec 22 2022 19:45:00 GMT+0200 (Eastern European Standard Time)">19.45</time> - 
+                  <time datetime="Thu Dec 22 2022 23:45:00 GMT+0200 (Eastern European Standard Time)">23.45</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">iRacing - Head Out World Tour 2022 Osakilpailu 3 @ Autódromo José Carlos Pace - GP
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/iracing-head-out-world-tour-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">keskiviikko<span class="small"> 28.12.2022</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">AMS2 - Around The World 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Wed Dec 28 2022 20:00:00 GMT+0200 (Eastern European Standard Time)">20.00</time> - 
+                  <time datetime="Thu Dec 29 2022 00:00:00 GMT+0200 (Eastern European Standard Time)">0.00</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">Automobilista 2</td>
+                <td label="Lisätiedot:" class="desc">AMS2 - Around The World 2022 Round 4 / Kisa1 @ 
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/ams2-around-the-world-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 05.01.2023</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">iRacing - Head Out World Tour 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Jan 05 2023 19:45:00 GMT+0200 (Eastern European Standard Time)">19.45</time> - 
+                  <time datetime="Thu Jan 05 2023 23:45:00 GMT+0200 (Eastern European Standard Time)">23.45</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">iRacing - Head Out World Tour 2022 Osakilpailu 4 @ Silverstone Legacy Historic 2008
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/iracing-head-out-world-tour-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 19.01.2023</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">iRacing - Head Out World Tour 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Jan 19 2023 19:45:00 GMT+0200 (Eastern European Standard Time)">19.45</time> - 
+                  <time datetime="Thu Jan 19 2023 23:45:00 GMT+0200 (Eastern European Standard Time)">23.45</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">iRacing - Head Out World Tour 2022 Osakilpailu 5 @ Road America Full Course
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/iracing-head-out-world-tour-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr><tr>
+                <td label="Päivä:" class="bold">torstai<span class="small"> 02.02.2023</span></td>
+                <td label="Järjestäjä:" class="bold">gtfr</td>
+                <td label="Kisa:" class="bold">iRacing - Head Out World Tour 2022</td>
+                <td label="Aika:" class="bold">
+                  <time datetime="Thu Feb 02 2023 19:45:00 GMT+0200 (Eastern European Standard Time)">19.45</time> - 
+                  <time datetime="Thu Feb 02 2023 23:45:00 GMT+0200 (Eastern European Standard Time)">23.45</time> 
+                  <span class="small">Europe/Helsinki</span></td>
+                <td label="Alusta:" class="bold">iRacing</td>
+                <td label="Lisätiedot:" class="desc">iRacing - Head Out World Tour 2022 Osakilpailu 6 @ Virginia Full Course
+<br>Katso lisätietoja: <a href="https://gtfr.fi/kisa/iracing-head-out-world-tour-2022/">GTFR:n verkkosivuilta</a></td>
+              </tr></tbody></table>
+    </div>
+    <footer>
+      <p>© Teemu Pölkki 2022. Jos haluat sarjasi kilpailut listaan, ota yhteyttä <a href="mailto:teemu.polkki@proton.me">teemu.polkki@proton.me</a><br> Sivuston
+        taustalla oleva Google Kalenterin voit <a href="https://calendar.google.com/calendar/u/0?cid=YjFmODExMWIxMTEzY2VjOGE2M2I1ZjhhYTVjNWJmMGZlNzBmODdlOTY3NDBmYzY5NDUwZDBkOTg4NTAwZDFmN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t">lisätä
+          omaan tiliisi täältä.</a>. Julkinen selaimessa avautuva versio on<a href="https://calendar.google.com/calendar/embed?src=904d33b78d329e6c8449a0f1d14568bbf29ad48f4b8be1215421423ddf93be7b%40group.calendar.google.com&amp;ctz=Europe%2FHelsinki">
+          saatavilla täällä</a>
+        <br>
+        Sivusto on aktiivisessa kehityksessä, ja tällä hetkellä pre-alpha vaiheessa.
+      </p>
+      <figure class="figure">
+        <img class="img" src="more_grip.png">
+      </figure>
+    </footer>
+  </div>
+  <script>
+    /*
+    Sarjajärjestäjäspesifit kirjoitusasut
+    */
+    const elements = document.querySelectorAll("td[label='Järjestäjä:']");
+    const checkBoxes = document.querySelectorAll("input[type='checkbox']");
+    elements.forEach(element => {
+      switch (element.innerHTML) {
+        case 'gtfr':
+          element.innerHTML = '<a href="https://gtfr.fi/">GTFR</a>'
+          break;
+        case 'fisra':
+          element.innerHTML = '<a href="https://simracing.fi/fisra">FiSRA</a>'
+          break;
+        case 'fisu':
+          element.innerHTML = '<a href="https://simracing.fi/sarjat/11">FiSU</a>'
+          break;
+        case 'trellet':
+          element.innerHTML = '<a href="https://trellet.net/">Trellet</a>'
+          break;
+        case 'f.a.s.t':
+          element.innerHTML = '<a href="https://fast-simracing.com/">F.A.S.T.</a>'
+        default:
+          element.innerHTML = element.innerHTML
+
+      }
+    })
+    function filter(box) {
+      const datarows = document.querySelectorAll("#dynamic-data tr");
+      console.log(box)
+      if (!box.checked) {
+        datarows.forEach(row => {
+          if (row.children[4].innerHTML === box.value) {
+            row.style.display = "none";
+          }
+        })
+      } else {
+        datarows.forEach(row => {
+          if (row.children[4].innerHTML === box.value) {
+            row.style.display = "table-row";
+          }
+        })
+      }
+    }
+  </script>
+
+
+</body></html>

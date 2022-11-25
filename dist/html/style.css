@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+th {
+  font-family: "Kanit";
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-image: url('/img/2.png');
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
+}
+
+#container {
+  backdrop-filter: blur(5px);
+}
+
+a,
+a:visited,
+a:link {
+  color: white;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0px 2rem;
+  text-align: left;
+}
+
+th {
+  font-size: 2rem;
+}
+
+thead tr {
+  border-bottom: 6px solid black
+}
+
+td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#heading {
+  font-family: "Kanit";
+  text-align: center;
+  font-size: 3.2rem;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+tbody {
+  margin-top: 2px;
+}
+
+
+
+
+td span.small {
+  font-weight: 200;
+  font-size: 0.8em;
+}
+
+
+
+
+tbody tr:nth-child(even) {
+  background-color: rgba(0, 2, 7, 0.2);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgba(0, 2, 7, 0.2);
+}
+
+tbody td:nth-child(even) {
+  background-color: rgba(0, 2, 7, 0.3);
+}
+
+tbody td:nth-child(odd) {
+  background-color: rgba(0, 2, 7, 0.5);
+}
+
+tbody td {
+  width: 100%;
+}
+
+table thead {
+  display: none;
+}
+
+table td {
+  display: inline-block;
+  padding-left: 12px;
+}
+
+table td::before {
+  content: attr(label);
+  font-weight: bold;
+  width: 120px;
+  min-width: 120px;
+  margin: 4px 8px 4px 0px;
+  text-decoration: underline;
+}
+
+
+
+img {
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  margin: 12px;
+  padding: 1em;
+}
+
+details summary {
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 1em
+}
+
+details summary>* {
+  display: inline;
+
+}
+
+
+details fieldset {
+  padding: 8px;
+  padding-top: 1.5em;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(0, 2, 10, 0.4);
+}
+
+details fieldset legend {
+  position: relative;
+  top: 1em;
+}
+
+details fieldset label {
+  margin: 0.5em;
+}
+
+details fieldset input {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+@media screen and (min-width: 1100px) {
+  tbody tr:nth-child(even) {
+    background-color: rgba(2, 5, 7, 0.7);
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba(0, 2, 10, 0.4);
+  }
+
+  tbody td:nth-child(even) {
+    background-color: rgba(0, 2, 7, 0);
+  }
+
+  tbody td:nth-child(odd) {
+    background-color: rgba(0, 2, 7, 0);
+  }
+
+  tbody tr td:nth-child(2) {
+    background-color: rgba(0, 2, 7, 0.4);
+  }
+
+  #organizer {
+    width: 15%;
+  }
+
+  #event {
+    width: 20%;
+  }
+
+  #date {
+    width: 10%;
+  }
+
+  #time {
+    width: 10%;
+  }
+
+  #platform {
+    width: 10%;
+  }
+
+  #desc {
+    width: 35%;
+  }
+
+  body {
+    max-width: 1400px;
+  }
+
+  thead {
+    display: flex;
+  }
+
+  tr {
+    display: table-row
+  }
+
+  table {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  tbody td {
+    width: inherit;
+    padding: 6px 6px;
+    margin: 0;
+  }
+
+  table thead {
+    display: table-header-group;
+    position: sticky;
+    top: 0px;
+    background-color: rgba(0, 2, 7, 0.9);
+  }
+
+  table thead th {
+    position: relative;
+    text-align: center;
+  }
+
+  table td {
+    display: table-cell;
+    text-align: center;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(0, 2, 7, 0.8);
+  }
+
+  table td::before {
+    content: none;
+    font-weight: none;
+    width: unset;
+    min-width: unset;
+    margin: unset;
+    text-decoration: unset;
+  }
+
+  figure {
+    margin: auto;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    max-width: 500px;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0px 0.5rem;
+    text-align: left;
+  }
+
+  span.small {
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+
+footer p {
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background-color: rgba(0, 2, 7, 0.9);
+}
