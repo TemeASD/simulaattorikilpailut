@@ -42,6 +42,26 @@ elements.forEach(element => {
 })
 //filtterit 
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
+let filters = [];
+
+// Jos ei filttereitä, laita kaikki päälle
+if (localStorage.getItem("filters") === null) {
+  checkBoxes.forEach(box => {
+    filters.push({ "checked": true, "simulator": box.value })
+    box.checked = true;
+  })
+  localStorage.setItem("filters", JSON.stringify(filters));
+}
+// Filtterit muuttujaan, vaihda checkboxien tilaa
+const searchState = JSON.parse(localStorage.getItem("filters"));
+searchState.forEach(state => {
+  checkBoxes.forEach(box => {
+    if (state.simulator === box.value) {
+      box.checked = state.checked;
+    }
+  })
+})
+
 function filter(box) {
   const datarows = document.querySelectorAll("#dynamic-data tr");
   console.log(box)
@@ -49,12 +69,25 @@ function filter(box) {
     datarows.forEach(row => {
       if (row.children[4].innerHTML === box.value) {
         row.style.display = "none";
+        searchState.forEach(state => {
+          if (state.simulator === box.value) {
+            state.checked = false;
+            localStorage.setItem("filters", JSON.stringify(searchState));
+          }
+        })
       }
     })
   } else {
     datarows.forEach(row => {
       if (row.children[4].innerHTML === box.value) {
         row.style.display = "table-row";
+        searchState.forEach(state => {
+          if (state.simulator === box.value) {
+            state.checked = true;
+            localStorage.setItem("filters", JSON.stringify(searchState));
+          }
+        })
+
       }
     })
   }
