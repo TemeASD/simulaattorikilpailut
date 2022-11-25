@@ -8,6 +8,9 @@
 const elements = document.querySelectorAll("td[label='Järjestäjä:']");
 elements.forEach(element => {
   switch (element.innerHTML) {
+    case 'kars':
+      element.innerHTML = '<a href="https://www.kars.fi/">KARS</a>';
+      break;
     case 'gtfr':
       element.innerHTML = '<a href="https://gtfr.fi/">GTFR</a>'
       break;
