@@ -17,7 +17,6 @@ exports.writeCalendarEventsToHTML = async () => {
   const html = fs_sync.readFileSync('./views/index.html', { encoding: 'utf8', flag: 'r' });
   const cheerio = require('cheerio');
   const $ = cheerio.load(html);
-  const { calendar } = require('googleapis/build/src/apis/calendar');
   const events = await authorize().then(listEvents).catch(console.error);
   events.forEach(event => {
     event = sanitizeEvent(event);
@@ -164,7 +163,7 @@ async function listCalendars(auth) {
  *  {'email': 'organizer name@example.com'},
  *],
  *},
- *} @returns { Promise<void> }} 
+ *} @returns { Promise<Array> }} 
  */
 exports.createEventQueue = async (newEvents) => {
   let uniqueEvents = await authorize().then(async (auth) => {
