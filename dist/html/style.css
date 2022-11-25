@@ -151,12 +151,20 @@ details fieldset {
   padding: 8px;
   padding-top: 1.5em;
   border: none;
+  background-color: rgba(0, 2, 10, 0.4);
+  margin: auto;
+}
+
+details>fieldset>div {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: rgba(0, 2, 10, 0.4);
+  font-size: 1.25em;
+  max-width: 700px;
 }
 
 details fieldset legend {
+  font-weight: 600;
+  font-size: 1.5em;
   position: relative;
   top: 1em;
 }
@@ -166,11 +174,16 @@ details fieldset label {
 }
 
 details fieldset input {
-  width: 1.25em;
-  height: 1.25em;
+  width: 2em;
+  height: 2em;
+}
+
+details>fieldset>div {
+  margin: auto;
 }
 
 @media screen and (min-width: 1100px) {
+
   tbody tr:nth-child(even) {
     background-color: rgba(2, 5, 7, 0.7);
   }
@@ -291,6 +304,7 @@ details fieldset input {
     display: block;
     margin-bottom: 8px;
   }
+
 }
 
 footer p {
