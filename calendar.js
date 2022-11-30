@@ -13,6 +13,20 @@ const config = require('./config.json');
 
 let stripJs = require('strip-js');
 
+const platformClasses = {
+  'ACC': 'acc',
+  'AC': 'ac',
+  'iRacing': 'iracing',
+  'Gran Turismo 7': 'granturismo',
+  'DiRT Rally 2.0': 'dirtrally',
+  'Automobilista 2': 'automobilista',
+}
+
+const classFunc = (lookupObject, defaultCase = '') =>
+    expression => (lookupObject[expression] || lookupObject[defaultCase])();
+
+const getPlatformClass = classFunc(platformClasses, '');
+
 exports.writeCalendarEventsToHTML = async () => {
   const html = fs_sync.readFileSync('./views/index.html', { encoding: 'utf8', flag: 'r' });
   const cheerio = require('cheerio');
@@ -37,7 +51,7 @@ exports.writeCalendarEventsToHTML = async () => {
                   <time datetime="${startdate}">${isoStartTime}</time> - 
                   <time datetime="${enddate}">${isoEndTime}</time> 
                   <span class="small">Europe/Helsinki</span></td>
-                <td label="Alusta:" class="bold">${event.location}</td>
+                <td label="Alusta:" class="bold ${event.class}">${event.location}</td>
                 <td label="Lisätiedot:" class="desc">${event.description}</td>
               </tr>`;
 
@@ -52,6 +66,7 @@ function sanitizeEvent(event) {
   event.summary = stripJs(event.summary);
   event.description = stripJs(event.description);
   event.location = stripJs(event.location);
+  event.class = getPlatformClass(event.location)
   return event;
 }
 /**

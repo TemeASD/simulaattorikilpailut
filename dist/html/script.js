@@ -62,33 +62,41 @@ searchState.forEach(state => {
   })
 })
 
-function filter(box) {
-  const datarows = document.querySelectorAll("#dynamic-data tr");
-  console.log(box)
-  if (!box.checked) {
-    datarows.forEach(row => {
-      if (row.children[4].innerHTML === box.value) {
-        row.style.display = "none";
-        searchState.forEach(state => {
-          if (state.simulator === box.value) {
-            state.checked = false;
-            localStorage.setItem("filters", JSON.stringify(searchState));
-          }
-        })
-      }
-    })
-  } else {
-    datarows.forEach(row => {
-      if (row.children[4].innerHTML === box.value) {
-        row.style.display = "table-row";
-        searchState.forEach(state => {
-          if (state.simulator === box.value) {
-            state.checked = true;
-            localStorage.setItem("filters", JSON.stringify(searchState));
-          }
-        })
 
-      }
-    })
+function toggleClass(element, toggleClass){
+  let currentClass = element.className || '';
+  let newClass;
+  if(currentClass.split(' ').indexOf(toggleClass) > -1){ //has class
+    newClass = currentClass.replace(new RegExp('\\b'+toggleClass+'\\b','g'), '')
+  }else{
+    newClass = currentClass + ' ' + toggleClass;
   }
+  element.className = newClass.trim();
 }
+
+
+function filter() {
+  const datarows = document.querySelectorAll("#dynamic-data tr");
+  const active = document.querySelectorAll("dl.org-legend.hl")
+  const selected = Array.from(active).map(hl => {
+    console.log("hl", hl);
+    return hl.dataset.sim
+  });
+
+  console.log(active)
+  console.log(selected)
+  datarows.forEach(row => {
+    if(selected.length < 1){
+      row.style.display = "table-row";
+      console.log("no filters, show all")
+
+    } else if (selected.length > 0 && !selected.includes(row.children[4].innerHTML)) {
+      row.style.display = "none";
+      console.log("filter", row.children[4].innerHTML)
+    } else {
+      row.style.display = "table-row";
+      console.log("display", row.children[4].innerHTML)
+    }
+  })
+}
+
