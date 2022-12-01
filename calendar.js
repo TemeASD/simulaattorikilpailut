@@ -22,10 +22,9 @@ const platformClasses = {
   'Automobilista 2': 'automobilista',
 }
 
-const classFunc = (lookupObject, defaultCase = '') =>
-    expression => (lookupObject[expression] || lookupObject[defaultCase])();
-
-const getPlatformClass = classFunc(platformClasses, '');
+const getPlatformClass = (location) => {
+  return platformClasses[location] || location;
+}
 
 exports.writeCalendarEventsToHTML = async () => {
   const html = fs_sync.readFileSync('./views/index.html', { encoding: 'utf8', flag: 'r' });
@@ -140,7 +139,6 @@ async function listEvents(auth) {
     console.log('No upcoming events found.');
     return;
   }
-  console.log(events)
   return events;
 }
 
