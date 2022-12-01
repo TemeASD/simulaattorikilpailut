@@ -113,7 +113,7 @@ function saveFiltersToLocalStorage(sim, state) {
 
 /*localstorage version management
 I guess we just increment the version manually by hand if it goes up*/
-const localStorageVersion = 1;
+const localStorageVersion = "3";
 if (localStorage.getItem("version") === null) {
   localStorage.setItem("version", localStorageVersion);
 }
