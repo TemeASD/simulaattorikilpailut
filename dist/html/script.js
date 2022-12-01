@@ -89,7 +89,7 @@ function filter() {
   datarows.forEach(row => {
     if (selected.length < 1) {
       row.style.display = "table-row";
-      saveFiltersToLocalStorage(row.children[4].innerHTML, true)
+      saveFiltersToLocalStorage(row.children[4].innerHTML, false)
 
     } else if (selected.length > 0 && !selected.includes(row.children[4].innerHTML)) {
       row.style.display = "none";
