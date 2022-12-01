@@ -333,7 +333,7 @@ dd {
 
 .legendcontainer dl.hl {
   border: rgba(11, 203, 154, 0.4) 1px solid;
-  padding: 3px;
+  padding: 4px;
   border-radius: 2px;
   background: #0bcb9a;
   background-color: rgba(68, 196, 164, 0.3);
@@ -341,7 +341,7 @@ dd {
 
 .legendcontainer dl:hover {
   border: rgba(11, 203, 154, 0.2) 1px solid;
-  padding: 3px;
+  padding: 4px;
   border-radius: 2px;
   background: #0bcb9a;
   background-color: rgba(68, 196, 164, 0.3);
