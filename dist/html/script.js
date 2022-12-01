@@ -44,54 +44,68 @@ elements.forEach(element => {
   }
 })
 //filtterit 
-const checkBoxes = document.querySelectorAll("input[type='checkbox']");
+const sims = document.querySelectorAll("dl.org-legend");
 let filters = [];
 
-// Jos ei filttereitä, laita kaikki päälle
+// Jos ei filttereitä, laita kaikki pois päältä
 if (localStorage.getItem("filters") === null) {
-  checkBoxes.forEach(box => {
-    filters.push({ "checked": true, "simulator": box.value })
-    box.checked = true;
+  sims.forEach(sim => {
+    filters.push({ "active": false, "simulator": sim.children[1].innerHTML })
   })
   localStorage.setItem("filters", JSON.stringify(filters));
 }
 // Filtterit muuttujaan, vaihda checkboxien tilaa
-const searchState = JSON.parse(localStorage.getItem("filters"));
-searchState.forEach(state => {
-  checkBoxes.forEach(box => {
-    if (state.simulator === box.value) {
-      box.checked = state.checked;
+filters = JSON.parse(localStorage.getItem("filters"));
+filters.forEach(state => {
+  sims.forEach(sim => {
+    if (state.simulator === sim.children[1].innerHTML && state.active) {
+      toggleClass(sim, "hl")
     }
   })
 })
 
-function filter(box) {
-  const datarows = document.querySelectorAll("#dynamic-data tr");
-  console.log(box)
-  if (!box.checked) {
-    datarows.forEach(row => {
-      if (row.children[4].innerHTML === box.value) {
-        row.style.display = "none";
-        searchState.forEach(state => {
-          if (state.simulator === box.value) {
-            state.checked = false;
-            localStorage.setItem("filters", JSON.stringify(searchState));
-          }
-        })
-      }
-    })
-  } else {
-    datarows.forEach(row => {
-      if (row.children[4].innerHTML === box.value) {
-        row.style.display = "table-row";
-        searchState.forEach(state => {
-          if (state.simulator === box.value) {
-            state.checked = true;
-            localStorage.setItem("filters", JSON.stringify(searchState));
-          }
-        })
+filter()
 
-      }
-    })
+
+function toggleClass(element, toggleClass) {
+  let currentClass = element.className || '';
+  let newClass;
+  if (currentClass.split(' ').indexOf(toggleClass) > -1) { //has class
+    newClass = currentClass.replace(new RegExp('\\b' + toggleClass + '\\b', 'g'), '')
+  } else {
+    newClass = currentClass + ' ' + toggleClass;
   }
+  element.className = newClass.trim();
+}
+
+
+function filter() {
+  const datarows = document.querySelectorAll("#dynamic-data tr");
+  const active = document.querySelectorAll("dl.org-legend.hl")
+  const selected = Array.from(active).map(hl => {
+    return hl.dataset.sim
+  });
+
+  datarows.forEach(row => {
+    if (selected.length < 1) {
+      row.style.display = "table-row";
+      saveFiltersToLocalStorage(row.children[4].innerHTML, true)
+
+    } else if (selected.length > 0 && !selected.includes(row.children[4].innerHTML)) {
+      row.style.display = "none";
+      saveFiltersToLocalStorage(row.children[4].innerHTML, false)
+    } else {
+      saveFiltersToLocalStorage(row.children[4].innerHTML, true)
+      row.style.display = "table-row";
+    }
+  })
+}
+
+function saveFiltersToLocalStorage(sim, state) {
+  filters.forEach(filter => {
+    if (filter.simulator === sim) {
+      filter.active = state;
+    }
+  });
+  localStorage.setItem("filters", JSON.stringify(filters));
 }
