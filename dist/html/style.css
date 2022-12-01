@@ -11,13 +11,14 @@ th {
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
-  margin: 0;
+  background-color: #222222;
+  font-size: 15px;
+  line-height: 1.45;
   padding: 0;
   width: 100%;
   height: 100%;
   margin: 0 auto;
   background-image: url('/img/2.png');
-  background-blend-mode: darken;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center top;
@@ -75,15 +76,10 @@ tbody {
 }
 
 
-
-
 td span.small {
   font-weight: 200;
   font-size: 0.8em;
 }
-
-
-
 
 tbody tr:nth-child(even) {
   background-color: rgba(0, 2, 7, 0.2);
@@ -139,6 +135,7 @@ h1 {
   padding: 1em;
 }
 
+
 details summary {
   cursor: pointer;
   text-align: center;
@@ -193,6 +190,7 @@ details>fieldset>div {
   background-color: rgba(2, 5, 7, 0.2);
 
 }
+
 
 @media screen and (min-width: 1100px) {
 
@@ -290,7 +288,6 @@ details>fieldset>div {
 
   table td::before {
     content: none;
-    font-weight: none;
     width: unset;
     min-width: unset;
     margin: unset;
@@ -326,4 +323,121 @@ footer p {
   text-align: center;
   margin-bottom: 2rem;
   background-color: rgba(0, 2, 7, 0.9);
+}
+
+.filters {
+  background-color: rgba(0, 2, 10, 0.6);
+  padding: 8px;
+  width: 100%;
+}
+
+/*filters .legendcontainer {
+  border: none;
+  text-align: center;
+  font-size: 1.5em;
+  width: 80%;
+  margin: 0 auto;
+}*/
+
+
+.legendcontainer {
+  break-inside: avoid-column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  color: #bcbcbc;
+  font-size: 1.1rem;
+  gap: 0.5rem;
+  margin: 1rem auto;
+  align-self: center;
+  justify-self: center;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.legendcontainer dl dt {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+  line-height: 20px;
+
+}
+
+/*.legendcontainer dl dd{
+  display: inline-block;
+  margin: 0px 5px;
+  padding-bottom: 0;
+  vertical-align: middle;
+}*/
+
+dl {
+  display: grid;
+  grid-template-columns: 25px auto;
+  vertical-align: middle;
+  align-items: center;
+}
+
+dt {
+  grid-column-start: 1;
+}
+
+dd {
+  grid-column-start: 2;
+}
+
+.legendcontainer dl {
+  border: 1px solid transparent;
+  padding: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  border: rgba(11, 203, 154, 0.1) 2px solid;
+  background-color: rgba(6, 97, 74, 0.1);
+  padding: 3px;
+  border-radius: 2px;
+}
+
+.legendcontainer dl.hl {
+  border: rgba(11, 203, 154, 0.4) 1px solid;
+  padding: 3px;
+  border-radius: 2px;
+  background: #0bcb9a;
+  background-color: rgba(68, 196, 164, 0.3);
+}
+
+.legendcontainer dl:hover {
+  border: rgba(11, 203, 154, 0.2) 1px solid;
+  padding: 3px;
+  border-radius: 2px;
+  background: #0bcb9a;
+  background-color: rgba(68, 196, 164, 0.3);
+}
+
+table tbody td.ac,
+.ac {
+  background-color: #99411E;
+}
+
+table tbody td.acc,
+.acc {
+  background-color: #441E99;
+}
+
+table tbody td.iracing,
+.iracing {
+  background-color: #2e358c;
+}
+
+table tbody td.automobilista,
+.automobilista {
+  background-color: #995D1E;
+}
+
+table tbody td.dirtrally,
+.dirtrally {
+  background-color: #8C991E;
+}
+
+table tbody td.granturismo,
+.granturismo {
+  background-color: #991E35;
 }

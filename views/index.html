@@ -14,59 +14,56 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.simulaattorikilpailut.fi/" />
   <meta property="og:image" content="https://www.simulaattorikilpailut.fi/img/simulaattorikilpailut.png" />
+
   <meta property="og:description"
     content="Simulaattorikilpailut.fi:n tavoitteena on listata kaikki Suomalaiset simulaatiokilpailut yhdellä sivustolla. Jos haluat oman sarjasi kilpailut sivustolle, ota yhteyttä Teemu.Polkki@proton.me">
   <link rel="stylesheet" href="style.css">
   <script defer data-domain="simulaattorikilpailut.fi" src="https://newkyng.asuscomm.com/js/plausible.js"></script>
+
 </head>
 
 <body>
   <div id="container">
     <div id="bg"></div>
     <h1 id="heading">Tulevat kilpailut</h1>
-    <details>
-      <summary>
-        <h4>Haku</h4>
-      </summary>
-      <fieldset>
-        <legend>Alusta:</legend>
-        <div>
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="ACC" name="simulator" value="ACC">
-            <label for="ACC">ACC</label>
-          </div>
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="AC" name="simulator" value="AC">
-            <label for="AC">AC</label>
-          </div>
 
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="iRacing" name="simulator" value="iRacing">
-            <label for="iRacing">iRacing</label>
-          </div>
+    <div class="filters">
+      <div class="legendcontainer">
 
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="Automobilista2" name="simulator"
-              value="Automobilista 2">
-            <label for="Automobilista2">Automobilista 2</label>
-          </div>
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="DR2" name="simulator"
-              value="DiRT Rally 2.0">
-            <label for="DR2">DiRT Rally 2.0</label>
-          </div>
-          <div>
-            <input onclick="return filter(this)" checked type="checkbox" id="GranTurismo7" name="simulator"
-              value="Gran Turismo 7">
-            <label for="GranTurismo7">Gran Turismo 7</label>
-          </div>
-        </div>
-      </fieldset>
-    </details>
-    <div class="disclaimer">
-      <p>Sivustolla listatut kilpailun ajankohdat ovat suntaa antavia. Tarkan tiedon löydät aina sarjan/kilpailun
-        verkkosivustoilta.</p>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="ACC" name="simulator"
+          data-sim="ACC">
+          <dt class="acc"></dt>
+          <dd>ACC</dd>
+        </dl>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="AC" name="simulator"
+          data-sim="AC">
+          <dt class="ac"></dt>
+          <dd>AC</dd>
+        </dl>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="iRacing" name="simulator"
+          data-sim="iRacing">
+          <dt class="iracing"></dt>
+          <dd>iRacing</dd>
+        </dl>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="Automobilista2"
+          data-sim="Automobilista 2" value="Automobilista 2">
+          <dt class="automobilista"></dt>
+          <dd>Automobilista 2</dd>
+        </dl>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="DR2" name="simulator"
+          data-sim="DiRT Rally 2.0">
+          <dt class="dirtrally"></dt>
+          <dd>Dirt Rally 2</dd>
+        </dl>
+        <dl class="org-legend" onclick="toggleClass(this, 'hl'); return filter()" id="GranTurismo7"
+          data-sim="Gran Turismo 7" value="Gran Turismo 7">
+          <dt class="granturismo"></dt>
+          <dd>Gran Turismo 7</dd>
+        </dl>
+
+      </div>
     </div>
+
 
     <div id="cal-container">
       <table>
@@ -81,6 +78,8 @@
           </tr>
         </thead>
         <tbody id="dynamic-data">
+
+        </tbody>
       </table>
     </div>
     <footer>
