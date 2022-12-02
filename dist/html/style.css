@@ -18,7 +18,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-image: url('/img/2.png');
+  background-image: url('/img/2.webp');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center top;
@@ -26,7 +26,6 @@ body {
 }
 
 #container {
-  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -119,11 +118,7 @@ table td::before {
   text-decoration: underline;
 }
 
-figure,
-img {
-  margin: auto;
-  display: block;
-}
+
 
 img {
   width: 100%;
@@ -135,65 +130,7 @@ h1 {
   padding: 1em;
 }
 
-
-details summary {
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.5em;
-  margin-top: 1em
-}
-
-details summary>* {
-  display: inline;
-
-}
-
-
-details fieldset {
-  padding: 8px;
-  padding-top: 1.5em;
-  border: none;
-  background-color: rgba(0, 2, 10, 0.4);
-  margin: auto;
-}
-
-details>fieldset>div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  font-size: 1.25em;
-  max-width: 700px;
-}
-
-details fieldset legend {
-  font-weight: 600;
-  font-size: 1.5em;
-  position: relative;
-  top: 1em;
-}
-
-details fieldset label {
-  margin: 0.5em;
-}
-
-details fieldset input {
-  width: 2em;
-  height: 2em;
-}
-
-details>fieldset>div {
-  margin: auto;
-}
-
-.disclaimer {
-  text-align: center;
-  font-weight: 600;
-  background-color: rgba(2, 5, 7, 0.2);
-
-}
-
-
 @media screen and (min-width: 1100px) {
-
   tbody tr:nth-child(even) {
     background-color: rgba(2, 5, 7, 0.7);
   }
@@ -266,7 +203,6 @@ details>fieldset>div {
 
   table thead {
     display: table-header-group;
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     background-color: rgba(0, 2, 7, 0.9);
@@ -314,7 +250,6 @@ details>fieldset>div {
     display: block;
     margin-bottom: 8px;
   }
-
 }
 
 footer p {

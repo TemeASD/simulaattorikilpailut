@@ -89,7 +89,7 @@ function filter() {
   datarows.forEach(row => {
     if (selected.length < 1) {
       row.style.display = "table-row";
-      saveFiltersToLocalStorage(row.children[4].innerHTML, true)
+      saveFiltersToLocalStorage(row.children[4].innerHTML, false)
 
     } else if (selected.length > 0 && !selected.includes(row.children[4].innerHTML)) {
       row.style.display = "none";
@@ -108,4 +108,16 @@ function saveFiltersToLocalStorage(sim, state) {
     }
   });
   localStorage.setItem("filters", JSON.stringify(filters));
+}
+
+
+/*localstorage version management
+I guess we just increment the version manually by hand if it goes up*/
+const localStorageVersion = "3";
+if (localStorage.getItem("version") === null) {
+  localStorage.setItem("version", localStorageVersion);
+}
+if (localStorage.getItem("version") !== localStorageVersion) {
+  localStorage.clear();
+  localStorage.setItem("version", localStorageVersion);
 }
