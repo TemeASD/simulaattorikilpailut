@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const fs_sync = require('fs');
+const fsSync = require('fs');
 const path = require('path');
 const process = require('process');
 const { authenticate } = require('@google-cloud/local-auth');
@@ -11,7 +11,7 @@ const CREDENTIALS_PATH = path.join(process.cwd(), 'config.json');
 const config = require('./config.json');
 
 
-let stripJs = require('strip-js');
+const stripJs = require('strip-js');
 
 const platformClasses = {
   'ACC': 'acc',
@@ -20,29 +20,29 @@ const platformClasses = {
   'Gran Turismo 7': 'granturismo',
   'DiRT Rally 2.0': 'dirtrally',
   'Automobilista 2': 'automobilista',
-}
+};
 
-const getPlatformClass = (location) => {
+const getPlatformClass = location => {
   return platformClasses[location] || location;
-}
+};
 
 exports.writeCalendarEventsToHTML = async () => {
-  const html = fs_sync.readFileSync('./views/index.html', { encoding: 'utf8', flag: 'r' });
+  const html = fsSync.readFileSync('./views/index.html', { encoding: 'utf8', flag: 'r' });
   const cheerio = require('cheerio');
   const $ = cheerio.load(html);
   const events = await authorize().then(listEvents).catch(console.error);
   events.forEach(event => {
     event = sanitizeEvent(event);
-    const dateOptions = { hour12: false, month: "2-digit", day: "2-digit", year: "numeric" };
-    const timeOptions = { hour12: false, hour: "numeric", minute: "numeric" }
+    const dateOptions = { hour12: false, month: '2-digit', day: '2-digit', year: 'numeric' };
+    const timeOptions = { hour12: false, hour: 'numeric', minute: 'numeric' };
     const startdate = new Date(event.start.dateTime);
     const enddate = new Date(event.end.dateTime);
-    const textDate = startdate.toLocaleString("fi-FI", { weekday: 'long' });
-    const isoDate = new Intl.DateTimeFormat("fi-FI", dateOptions).format(startdate);
-    const isoStartTime = new Intl.DateTimeFormat("fi-FI", timeOptions).format(startdate);
-    const isoEndTime = new Intl.DateTimeFormat("fi-FI", timeOptions).format(enddate);
-    const organizer = event.attendees[0].email.split("@")[0];
-    let row = `<tr>
+    const textDate = startdate.toLocaleString('fi-FI', { weekday: 'long' });
+    const isoDate = new Intl.DateTimeFormat('fi-FI', dateOptions).format(startdate);
+    const isoStartTime = new Intl.DateTimeFormat('fi-FI', timeOptions).format(startdate);
+    const isoEndTime = new Intl.DateTimeFormat('fi-FI', timeOptions).format(enddate);
+    const organizer = event.attendees[0].email.split('@')[0];
+    const row = `<tr>
                 <td label="Päivä:" class="bold">${textDate}<span class="small"> ${isoDate}</span></td>
                 <td label="Järjestäjä:" class="bold">${organizer}</td>
                 <td label="Kisa:" class="bold">${event.summary}</td>
@@ -56,16 +56,16 @@ exports.writeCalendarEventsToHTML = async () => {
 
     $('tbody').append(row);
   });
-  fs_sync.writeFileSync("./dist/html/index.html", $.root().html(), { encoding: 'utf8', flag: 'w' });
-}
-/**
+  fsSync.writeFileSync('./dist/html/index.html', $.root().html(), { encoding: 'utf8', flag: 'w' });
+};
+/*
  * Sanitize calendar event fields with stripjs
  */
 function sanitizeEvent(event) {
   event.summary = stripJs(event.summary);
   event.description = stripJs(event.description);
   event.location = stripJs(event.location);
-  event.class = getPlatformClass(event.location)
+  event.class = getPlatformClass(event.location);
   return event;
 }
 /**
@@ -143,8 +143,9 @@ async function listEvents(auth) {
 }
 
 //lists calendars
+// eslint-disable-next-line no-unused-vars
 async function listCalendars() {
-  authorize().then(async (auth) => {
+  authorize().then(async auth => {
     const calendar = google.calendar({ version: 'v3', auth });
     const res = await calendar.calendarList.list();
     const calendars = res.data.items;
@@ -158,6 +159,7 @@ async function listCalendars() {
     });
   }).catch(console.error);
 }
+// eslint-disable-next-line valid-jsdoc
 /**
  * Used for creating a list of events that you want to create
  * Doesn't create duplicate events, checks are based on event.summary and event.start.dateTime of old and new events
@@ -177,10 +179,10 @@ async function listCalendars() {
  *  {'email': 'organizer name@example.com'},
  *],
  *},
- *} @returns { Promise<Array> }} 
- */
-exports.createEventQueue = async (newEvents) => {
-  let uniqueEvents = await authorize().then(async (auth) => {
+ *} @returns { Promise<Array> }}
+*/
+exports.createEventQueue = async newEvents => {
+  const uniqueEvents = await authorize().then(async auth => {
     events = [];
     const calendar = google.calendar({ version: 'v3', auth });
     const res = await calendar.events.list({
@@ -192,50 +194,48 @@ exports.createEventQueue = async (newEvents) => {
       orderBy: 'startTime',
     });
     const oldEvents = res.data.items;
-    console.log(oldEvents.length)
-    console.log(newEvents.length)
 
-    for (let newEvent of newEvents) {
+    for (const newEvent of newEvents) {
       let notUnique;
-      for (let oldEvent of oldEvents) {
-        let oldEventStartDay = new Date(oldEvent.start.dateTime).toDateString();
-        let newEventStartDay = new Date(newEvent.start.dateTime).toDateString();
+      for (const oldEvent of oldEvents) {
+        const oldEventStartDay = new Date(oldEvent.start.dateTime).toDateString();
+        const newEventStartDay = new Date(newEvent.start.dateTime).toDateString();
         if (oldEventStartDay === newEventStartDay && oldEvent.summary === newEvent.summary) {
-          notUnique = true
+          notUnique = true;
         }
       }
       if (notUnique) {
-        notUnique = false
+        notUnique = false;
       } else {
-        events.push(newEvent)
+        events.push(newEvent);
       }
     }
     return events;
   });
   return uniqueEvents;
-}
+};
 
 /**
  * Takes array of events, then creates a single one every four second
  * Gets around Googles pesky rate limit
- * @param {*} events 
+ * @param {*} events
  */
-exports.createEvents = (events) => {
-  authorize().then(async (auth) => {
+exports.createEvents = events => {
+  authorize().then(async auth => {
     for (let i = 0; i < events.length; i++) {
       setTimeout(() => {
         createEvent(events[i], auth);
-      }, 4000 * i)
+      }, 4000 * i);
     }
   });
-}
+};
 
 function createEvent(event, auth) {
-  console.log('creating event')
+  console.log('creating event');
   const calendar = google.calendar({ version: 'v3', auth });
   calendar.events.insert({
     auth: auth,
     calendarId: config.installed.calendar_id,
     resource: event,
   });
-}
+};

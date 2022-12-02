@@ -1,4 +1,4 @@
-/**
+/**here
  * Simple example on how to create a new provider
  * 1. Get the data from somewhere, cheerio and axios dependencies already
  * 2. Parse the data to an array of events
@@ -10,11 +10,11 @@
  * Example events here
  */
 const calendar = require('../calendar.js');
-const axios = require("axios");
+const axios = require('axios');
 const args = process.argv.slice(2);
-const url = args[0]
-const simulator = "Testing";
-const org = "Testing"
+const url = args[0];
+const simulator = 'Testing';
+const org = 'Testing';
 
 /**
   * @param {string} url url to fetch data from
@@ -24,44 +24,44 @@ const org = "Testing"
 async function parseExample(url, simulator) {
   const data = await axios.get(url);
   data.events.forEach(event => {
-    let template = {
-      "summary": "Testing Calendar Event Creation",
-      "location": "",
-      "description": "",
-      "start": { "dateTime": "", "timeZone": "Europe/Helsinki", },
-      "end": { "dateTime": "", "timeZone": "Europe/Helsinki", },
+    const template = {
+      'summary': 'Testing Calendar Event Creation',
+      'location': '',
+      'description': '',
+      'start': { 'dateTime': '', 'timeZone': 'Europe/Helsinki' },
+      'end': { 'dateTime': '', 'timeZone': 'Europe/Helsinki' },
       'attendees': [
         { 'email': `${org}@example.com` },
       ],
-    }
-    let dates = dateParser(event.racedate)
-    let link = `https://trellet.net/tulospalvelu/kausi/${data.data.season.id}`
+    };
+    const dates = dateParser(event.racedate);
+    const link = `https://trellet.net/tulospalvelu/kausi/${data.data.season.id}`;
     template.location = simulator;
     template.summary = `${event.name}`;
     template.description = `Ajat ovat suuntaa-antavia. <br>Sarja: ${seasonName}
-    <br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `
+    <br><a href="${link}">Linkki Trellet.netin tulospalveluun</a><br><a href="https://www.twitch.tv/simracingfi/">Kilpailulähetykset alkavat n. 20:15.</a> `;
     template.start.dateTime = dates.starttime;
     template.end.dateTime = dates.endtime;
-    template.push(event)
-  })
+    template.push(event);
+  });
   return events;
 }
 
 /**
  * @param {string} date for example 5.10.2022 klo 20:00
- * @return {object} {starttime: "date.toISOString()", endtime: "date.toISOString()"}
+ * @return {object} {starttime: 'date.toISOString()', endtime: 'date.toISOString()'}
 */
 function dateParser(date) {
-  let starttime = `${date.substring(0, 10)}T19:00:00+02:00`;
-  let endtime = `${date.substring(0, 10)}T23:00:00+02:00`;
-  return { starttime, endtime }
+  const starttime = `${date.substring(0, 10)}T19:00:00+02:00`;
+  const endtime = `${date.substring(0, 10)}T23:00:00+02:00`;
+  return { starttime, endtime };
 }
 /**
  * Call the function and create the events
  */
-parseExample(url, simulator).then(async (events) => {
+parseExample(url, simulator).then(async events => {
   //queue here is used to make sure that the events are unique
-  let queue = await calendar.createEventQueue(events);
+  const queue = await calendar.createEventQueue(events);
   //create events from the queue
   calendar.createEvents(queue);
-})
+});
