@@ -130,7 +130,7 @@ async function listEvents(auth) {
   const res = await calendar.events.list({
     calendarId: config.installed.calendar_id,
     timeMin: new Date().toISOString(),
-    maxResults: 99,
+    maxResults: 50,
     singleEvents: true,
     orderBy: 'startTime',
   });
