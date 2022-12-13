@@ -175,11 +175,9 @@ async function listCalendars() {
   *  'dateTime': '2015-05-28T09:00:00+02:00',
   *  'timeZone': 'Europe/Helsinki',
  *},
- *'attendees': [
- *  {'email': 'organizer name@example.com'},
- *],
+ *'attendees': [{'email': 'organizer name@example.com'}],
  *},
- *} @returns { Promise<Array> }}
+ * @returns { Promise<Array> }
 */
 exports.createEventQueue = async newEvents => {
   const uniqueEvents = await authorize().then(async auth => {
