@@ -8,5 +8,10 @@ echo "Simracing.fi done"
 node ./providers/trellet.js
 echo "Trellet done"
 
-npm run release-html
+node ./index.js
+cp -r ./dist/html/* ../simracingfi-calendar-dist/
+cd /home/devbox/simracingfi-calendar-dist/
+git add -A
+git commit -a -m "Update" && git push
+
 echo "Released"
