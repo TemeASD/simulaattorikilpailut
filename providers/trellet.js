@@ -6,7 +6,7 @@ const calendar = require('../calendar.js');
 const axios = require('axios');
 const simulator = 'iRacing';
 const org = 'Trellet';
-const urls = ['https://trellet.net/api/league/seasons/159', 'https://trellet.net/api/league/seasons/158'];
+const urls = ['https://trellet.net/api/league/seasons/165'];
 async function parseTrellet(url) {
   const data = await axios.get(url);
   const seasonName = data.data.season.name;

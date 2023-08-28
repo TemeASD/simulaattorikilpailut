@@ -16,6 +16,7 @@ const stripJs = require('strip-js');
 const platformClasses = {
   'ACC': 'acc',
   'AC': 'ac',
+  'Assetto Corsa': 'ac',
   'iRacing': 'iracing',
   'Gran Turismo 7': 'granturismo',
   'DiRT Rally 2.0': 'dirtrally',

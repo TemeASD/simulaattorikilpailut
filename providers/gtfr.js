@@ -27,7 +27,7 @@ async function parseGTFR() {
     const dates = dateParser($(el).find('td:nth-child(1)').text());
     const link = $(el).find('td:nth-child(2)').find('a').attr('href');
 
-    event.location = $(el).find('td:nth-child(3)').text();
+    event.location = helpers.simNameNormalizer($(el).find('td:nth-child(3)').text());
     event.summary = $(el).find('td:nth-child(2)').find('a').find('strong').text();
     event.description = `${$(el).find('td:nth-child(2)').text().replace(/(\r\n|\n|\r)/gm, '').replace(/\s{2,}/g, ' ')}
 <br>Katso lisätietoja: <a href="${link}">GTFR:n verkkosivuilta</a>`;

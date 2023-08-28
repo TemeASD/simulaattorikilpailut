@@ -12,6 +12,8 @@ node ./index.js
 cp -r ./dist/html/* ../simracingfi-calendar-dist/
 cd /home/devbox/simracingfi-calendar-dist/
 git add -A
-git commit -a -m "Update" && git push
+ssh -Tv git@github.com
+git commit -a -m "Update"
+git push
 
 echo "Released"

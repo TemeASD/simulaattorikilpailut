@@ -38,6 +38,11 @@ elements.forEach(element => {
     case 'prcf_esports':
       element.innerHTML = '<a href="http://www.porsche-racing-club-finland.fi/PorscheClubs/prc_finland/pc_main.nsf/web/FCAB2C256B83FE18C125847B003B3544">PRCF Esports</a>';
       break;
+    case 'kanaliiga':
+      element.innerHTML = '<a href="https://kanaliiga.fi/">Kanaliiga</a>';
+      break;
+    case 'äijäsarja':
+      element.innerHTML = '<a href="https://discord.gg/N2BjqWY4/">Äijäsarja</a><br><small>Discord kutsu</small>';
     default:
       element.innerHTML = element.innerHTML;
       break;
